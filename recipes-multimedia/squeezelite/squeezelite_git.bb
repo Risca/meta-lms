@@ -16,7 +16,6 @@ DEPENDS = " \
     faad2 \
     libav \
     soxr \
-    wiringpi\
 "
 
 SRCREV = "09672cfea0b45a0fee635ed62ee788e6ece3c858"
@@ -32,7 +31,7 @@ USERADD_PACKAGES = "${PN}"
 USERADD_PARAM:${PN} = "--system --home-dir /var/run/${PN} --user-group squeeze"
 GROUPMEMS_PARAM:${PN} = "--group audio --add squeeze"
 
-EXTRA_OEMAKE = 'OPTS="-DRESAMPLE -DFFMPEG -DVISEXPORT -DDSD -DGPIO -DRPI"'
+EXTRA_OEMAKE = 'OPTS="-DRESAMPLE -DFFMPEG -DVISEXPORT -DDSD"'
 
 do_install() {
     install -d ${D}${bindir}
