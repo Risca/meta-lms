@@ -20,7 +20,7 @@ DEPENDS = " \
 
 SRCREV = "09672cfea0b45a0fee635ed62ee788e6ece3c858"
 
-SRC_URI = "git://github.com/ralph-irving/${PN}.git;protocol=git;branch=master \
+SRC_URI = "git://github.com/ralph-irving/${PN}.git;protocol=https;branch=master \
            file://${PN}.service"
 
 S = "${WORKDIR}/git"

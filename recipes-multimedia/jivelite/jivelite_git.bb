@@ -18,7 +18,7 @@ DEPENDS = " \
 
 SRCREV = "39db5722a3bc8a9b924d1a8bba39328bf649df66"
 
-SRC_URI = "git://github.com/ralph-irving/${PN}.git;protocol=git;branch=master \
+SRC_URI = "git://github.com/ralph-irving/${PN}.git;protocol=https;branch=master \
            file://0001-fix-jivelite-cross-compile-issue.patch;patch=1 \
            file://jivelite.service \
            file://DroidSansFallback.ttf \
