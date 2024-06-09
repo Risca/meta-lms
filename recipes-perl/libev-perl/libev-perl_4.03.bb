@@ -26,6 +26,6 @@ do_compile() {
     cpan_do_compile
 }
 
-RDEPENDS_${PN} = "libev"
+RDEPENDS:${PN} = "libev"
 
 BBCLASSEXTEND = "native"

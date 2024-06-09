@@ -12,7 +12,7 @@ LICENSE = "Artistic-1.0 | GPL-1.0+"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/Artistic-1.0;md5=cda03bbdc3c1951996392b872397b798 \
 file://${COMMON_LICENSE_DIR}/GPL-1.0;md5=e9e36a9de734199567a4d769498f743d"
 
-RDEPENDS_${PN} = " perl-module-carp \
+RDEPENDS:${PN} = " perl-module-carp \
                    perl-module-exporter \
                    perl-module-exporter-heavy \
                    perl-module-dynaloader \
@@ -26,7 +26,7 @@ S = "${WORKDIR}/DBI-${PV}"
 
 inherit cpan ptest-perl
 
-do_install_prepend() {
+do_install:prepend() {
 	# test requires "-T" (taint) command line option
 	rm -rf ${B}/t/pod-coverage.t
 	rm -rf ${B}/t/13taint.t

@@ -29,7 +29,7 @@ S = "${WORKDIR}/git"
 inherit useradd systemd
 
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--system --home-dir /home/jive --create-home --user-group jive"
+USERADD_PARAM:${PN} = "--system --home-dir /home/jive --create-home --user-group jive"
 
 EXTRA_OEMAKE = 'PREFIX="${STAGING_EXECPREFIXDIR}"'
 
@@ -68,16 +68,16 @@ do_install() {
 
 }
 
-FILES_${PN} = " \
+FILES:${PN} = " \
     ${bindir}/${PN} \
     ${libdir}/* \
     ${datadir}/* \
     ${systemd_system_unitdir}/${PN}.service \
 "
 
-SYSTEMD_SERVICE_${PN} = "${PN}.service"
+SYSTEMD_SERVICE:${PN} = "${PN}.service"
 
 # need more effort to make the Makefile to work properly, walk around now
 CLEANBROKEN = "1"
-INSANE_SKIP_${PN} = "ldflags"
-INSANE_SKIP_${PN}-dev = "ldflags"
+INSANE_SKIP:${PN} = "ldflags"
+INSANE_SKIP:${PN}-dev = "ldflags"

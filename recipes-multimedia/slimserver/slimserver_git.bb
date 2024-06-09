@@ -23,7 +23,7 @@ S = "${WORKDIR}/git"
 inherit useradd systemd
 
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--system --home-dir ${libdir}/${PN} --user-group lms"
+USERADD_PARAM:${PN} = "--system --home-dir ${libdir}/${PN} --user-group lms"
 
 do_install() {
     ${S}/platforms/buildme.pl --build tarball --buildDir ${WORKDIR}/tmp --sourceDir ${S} --destDir ${WORKDIR} --destName ${PN} --noCPAN
@@ -47,16 +47,16 @@ do_install() {
     install -m 0644 ${WORKDIR}/${PN}.service ${D}${systemd_system_unitdir}/${PN}.service
 }
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${libdir}/${PN}/* \
     ${systemd_system_unitdir}/${PN}.service \
 "
 
-SYSTEMD_SERVICE_${PN} = "${PN}.service"
+SYSTEMD_SERVICE:${PN} = "${PN}.service"
 
 # slimserver seems quite picky at the perl module versions, some packages
 # support newer version while some not, so explicit specify the version for now
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     perl \
     perl-modules \
     libaudio-scan-perl (=0.99) \

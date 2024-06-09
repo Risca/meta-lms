@@ -29,8 +29,8 @@ S = "${WORKDIR}/git"
 inherit useradd systemd
 
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "--system --home-dir /var/run/${PN} --user-group squeeze"
-GROUPMEMS_PARAM_${PN} = "--group audio --add squeeze"
+USERADD_PARAM:${PN} = "--system --home-dir /var/run/${PN} --user-group squeeze"
+GROUPMEMS_PARAM:${PN} = "--group audio --add squeeze"
 
 EXTRA_OEMAKE = 'OPTS="-DRESAMPLE -DFFMPEG -DVISEXPORT -DDSD -DGPIO -DRPI"'
 
@@ -44,14 +44,14 @@ do_install() {
     chown squeeze:squeeze ${D}${bindir}/${PN}
 }
 
-FILES_${PN} = " \
+FILES:${PN} = " \
     ${bindir}/squeezelite \
     ${systemd_system_unitdir}/${PN}.service \
 "
 
-SYSTEMD_SERVICE_${PN} = "${PN}.service"
+SYSTEMD_SERVICE:${PN} = "${PN}.service"
 
-RDEPENDS_${PN} += " \
+RDEPENDS:${PN} += " \
     flac \
     libmad \
     libvorbis \

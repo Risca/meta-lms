@@ -19,7 +19,7 @@ S = "${WORKDIR}/Class-XSAccessor-${PV}"
 
 inherit cpan
 
-#do_configure_append() {
+#do_configure:append() {
 # nasty way to get around build error
 #    sed -e 's:-Werror=format-security::g' -i Makefile
 #}

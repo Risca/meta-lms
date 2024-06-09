@@ -24,11 +24,11 @@ inherit cpan
 
 EXTRA_CPANFLAGS = "--with-jpeg-libs='${STAGING_LIBDIR}' --with-png-libs='${STAGING_LIBDIR}'"
 
-do_configure_prepend() {
+do_configure:prepend() {
     export INCLUDE="${STAGING_INCDIR}"
 }
 
-do_configure_append_class-target() {
+do_configure:append:class-target() {
     sed -E \
         -e 's:-L${STAGING_LIBDIR}::g' \
         -e 's:-I${STAGING_INCDIR}::g' \
@@ -41,6 +41,6 @@ do_compile() {
     cpan_do_compile
 }
 
-RDEPENDS_${PN} = "jpeg libpng"
+RDEPENDS:${PN} = "jpeg libpng"
 
 BBCLASSEXTEND = "native"
